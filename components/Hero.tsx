@@ -90,7 +90,7 @@ export default function Hero() {
 
             <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:shadow-rose-500/20 hover:-translate-y-1 transition-all duration-500">
               <div className="text-5xl font-bold bg-gradient-to-r from-rose-500 via-rose-600 to-cyan-500 bg-clip-text text-transparent mb-3">
-                {'<'}2s
+                &lt;2s
               </div>
               <div className="text-slate-300 text-lg font-medium">Average Vote Time</div>
               <div className="text-slate-400 text-sm mt-2">Lightning-fast judgments</div>
