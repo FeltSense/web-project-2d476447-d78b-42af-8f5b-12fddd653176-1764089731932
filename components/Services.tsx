@@ -1,9 +1,17 @@
 'use client';
 
-import { Flame, Zap, TrendingUp, Users } from 'lucide-react';
+import { Flame, Zap, TrendingUp, Users, LucideIcon } from 'lucide-react';
+
+interface Feature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  gradient: string;
+  size: string;
+}
 
 export default function Services() {
-  const features = [
+  const features: Feature[] = [
     {
       icon: Flame,
       title: "Instant Rating",
@@ -34,6 +42,8 @@ export default function Services() {
     }
   ];
 
+  const FirstFeatureIcon = features[0].icon;
+
   return (
     <section id="services" className="py-24 md:py-32 bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -52,7 +62,7 @@ export default function Services() {
           {/* Large Feature Card - Spans 2 Columns */}
           <div className="md:col-span-2 rounded-2xl bg-slate-800/90 backdrop-blur-xl border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-rose-500/20 hover:-translate-y-1 transition-all duration-500 p-8 md:p-10 group">
             <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${features[0].gradient} mb-6 group-hover:scale-110 transition-transform duration-500`}>
-              <features[0].icon className="w-8 h-8 text-white" />
+              <FirstFeatureIcon className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
               {features[0].title}
@@ -72,22 +82,25 @@ export default function Services() {
           </div>
 
           {/* Smaller Feature Cards */}
-          {features.slice(1).map((feature, index) => (
-            <div 
-              key={index}
-              className="rounded-2xl bg-slate-800/90 backdrop-blur-xl border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-rose-500/20 hover:-translate-y-1 transition-all duration-500 p-8 md:p-10 group"
-            >
-              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.gradient} mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                <feature.icon className="w-6 h-6 text-white" />
+          {features.slice(1).map((feature, index) => {
+            const FeatureIcon = feature.icon;
+            return (
+              <div 
+                key={index}
+                className="rounded-2xl bg-slate-800/90 backdrop-blur-xl border border-slate-700 shadow-xl hover:shadow-2xl hover:shadow-rose-500/20 hover:-translate-y-1 transition-all duration-500 p-8 md:p-10 group"
+              >
+                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.gradient} mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <FeatureIcon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-300 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA Section */}
